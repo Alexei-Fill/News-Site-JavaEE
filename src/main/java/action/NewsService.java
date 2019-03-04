@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 
 @Singleton
@@ -30,12 +31,21 @@ public class NewsService {
         requestDispatcher.forward(req, resp);
     }
 
-    public void addNews(News news) {
-
+    public void addNews(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        News news = new News();
+        fillNews(req, news);
+        newsDAO.addNews(news);
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/EjEx2/listNews");
+        requestDispatcher.forward(req, resp);
     }
 
-    public void updateNews(News news){
-
+    public void updateNews(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        News news = new News();
+        news.setNewsId(Long.parseLong(req.getParameter("newsId")));
+        fillNews(req, news);
+        newsDAO.updateNews(news);
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/EjEx2/listNews");
+        requestDispatcher.forward(req, resp);
     }
 
     public void listNews(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -53,5 +63,12 @@ public class NewsService {
 
     public void deleteNews(long Id){
 
+    }
+
+    private void fillNews(HttpServletRequest req, News news){
+        news.setNewsTitle(req.getParameter("newsTitle"));
+        news.setNewsContent(req.getParameter("newsContent"));
+        news.setNewsBrief(req.getParameter("newsBrief"));
+        news.setNewsDate(LocalDate.parse(req.getParameter("newsDate")));
     }
 }
