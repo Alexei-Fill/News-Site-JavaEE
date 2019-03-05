@@ -43,6 +43,12 @@ public class  NewsSrevlet extends HttpServlet {
                 }
                 break;
             }
+            case ("/EjEx2/delete"): {
+                if (req.getMethod() == POST){
+                    newsService.deleteNews(req, resp);
+                }
+                break;
+            }
             case ("/EjEx2/listNews"):
             default: {
                 newsService.listNews(req, resp);

@@ -61,8 +61,15 @@ public class NewsService {
         requestDispatcher.forward(req, resp);
     }
 
-    public void deleteNews(long Id){
-
+    public void deleteNews(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String[] idString = req.getParameterValues("deleteNews");
+        if (idString != null) {
+            for (String s : idString) {
+               newsDAO.deleteNews(Long.parseLong(s.trim()));
+            }
+        }
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/EjEx2/listNews");
+        requestDispatcher.forward(req, resp);
     }
 
     private void fillNews(HttpServletRequest req, News news){
