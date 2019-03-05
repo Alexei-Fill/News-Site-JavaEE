@@ -2,20 +2,21 @@ package action;
 
 import DAO.NewsDAO;
 import entity.News;
-import net.bytebuddy.agent.builder.AgentBuilder;
 
+import javax.annotation.security.DenyAll;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ejb.Singleton;
-import javax.inject.Named;
+import javax.ejb.Stateless;
+import javax.security.enterprise.authentication.mechanism.http.LoginToContinue;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.List;
 
-@Singleton
+@Stateless
 public class NewsService {
 
     @EJB

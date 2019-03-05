@@ -13,7 +13,8 @@
         <a style="margin: 15px; color:blue; cursor: pointer; ">Russian</a>
         <a style="margin: 15px; color:blue; cursor: pointer;">English</a></u></b>
     <a>currentUser</a>
-    <a routerLink="/login-rest">login </a>
+    <a href="/EjEx2/login" >login </a>
+
     <a style="margin: 15px; color:blue; cursor: pointer;">Sign out</a>
 </div>
 <div class="smenu">
