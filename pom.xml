@@ -36,6 +36,13 @@
       <scope>provided</scope>
     </dependency>
 
+      <dependency>
+          <groupId>javax</groupId>
+          <artifactId>javaee-web-api</artifactId>
+          <version>8.0</version>
+          <scope>provided</scope>
+      </dependency>
+
     <dependency>
       <groupId>oracle</groupId>
       <artifactId>ojdbc6</artifactId>
@@ -55,16 +62,22 @@
       <version>1.2</version>
     </dependency>
 
-    <!--<dependency>-->
-      <!--<groupId>javax.security.enterprise</groupId>-->
-      <!--<artifactId>javax.security.enterprise-api</artifactId>-->
-      <!--<version>1.0</version>-->
-    <!--</dependency>-->
+    <dependency>
+      <groupId>javax.security.enterprise</groupId>
+      <artifactId>javax.security.enterprise-api</artifactId>
+      <version>1.0</version>
+    </dependency>
 
     <dependency>
       <groupId>org.glassfish.soteria</groupId>
       <artifactId>javax.security.enterprise</artifactId>
       <version>1.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.mindrot</groupId>
+      <artifactId>jbcrypt</artifactId>
+      <version>0.3m</version>
     </dependency>
 
       <!--<dependency>-->

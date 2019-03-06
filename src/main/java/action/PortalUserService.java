@@ -1,8 +1,5 @@
 package action;
 
-import DAO.PortalUserDAO;
-
-import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,11 +9,14 @@ import java.io.IOException;
 
 @Stateless
 public class PortalUserService {
-    @EJB
-    PortalUserDAO userDAO;
 
     public void showLoginPage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/login.jsp");
         requestDispatcher.forward(req, resp);
+    }
+
+    public void logOut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getSession().invalidate();
+        resp.sendRedirect("/EjEx2/listNews");
     }
 }

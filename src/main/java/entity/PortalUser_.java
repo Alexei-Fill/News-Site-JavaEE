@@ -12,11 +12,13 @@ public abstract class PortalUser_ {
 	public static volatile SingularAttribute<PortalUser, Integer> id;
 	public static volatile SingularAttribute<PortalUser, String> login;
 	public static volatile SingularAttribute<PortalUser, String> token;
+	public static volatile SingularAttribute<PortalUser, String> role;
 
 	public static final String PASSWORD = "password";
 	public static final String ID = "id";
 	public static final String LOGIN = "login";
 	public static final String TOKEN = "token";
+	public static final String ROLE = "role";
 
 }
 

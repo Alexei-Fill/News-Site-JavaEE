@@ -12,15 +12,21 @@
     <b style="margin-left: 65%;"><u>
         <a style="margin: 15px; color:blue; cursor: pointer; ">Russian</a>
         <a style="margin: 15px; color:blue; cursor: pointer;">English</a></u></b>
-    <a>currentUser</a>
-    <a href="/EjEx2/login" >login </a>
 
-    <a style="margin: 15px; color:blue; cursor: pointer;">Sign out</a>
+    <c:if test="${customPrincipal == null}">
+    <a href="/EjEx2/login">login </a>
+    </c:if>
+<c:if test="${customPrincipal != null}">
+    <a>${customPrincipal.name}</a>
+    <a href="/EjEx2/logout" style="margin: 15px; color:blue; cursor: pointer;">Sign out</a>
+</c:if>
 </div>
 <div class="smenu">
     <h2 align="center">news</h2>
     <h4><a href="/EjEx2/listNews">newsList</a></h4>
+<c:if test="${customPrincipal != null}">
     <h4><a href="/EjEx2/editNews">addNews</a></h4>
+</c:if>
 </div>
 <form action="delete" method="post">
     <c:forEach items="${listNews}" var="news">
@@ -31,14 +37,20 @@
             <h5>${news.newsBrief}</h5>
             <span style="float: right;">
     <a href="/EjEx2/news?id=${news.newsId}">  view</a>
-    <a href="/EjEx2/editNews?id=${news.newsId}"> edit</a>
+  <c:if test="${customPrincipal != null}">
+  <a href="/EjEx2/editNews?id=${news.newsId}"> edit</a>
 
             <input type="checkbox" name="deleteNews" value="${news.newsId}"/>
+  </c:if>
+
        </span>
             <h5></h5>
         </div>
     </c:forEach>
-    <input style="float: right;" type="submit" value="delete"/>
+<c:if test="${customPrincipal != null}">
+<input style="float: right;" type="submit" value="delete"/>
+</c:if>
+
 </form>
 </body>
 </html>

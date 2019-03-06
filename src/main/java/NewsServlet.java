@@ -1,12 +1,10 @@
 import action.NewsService;
 import action.PortalUserService;
 
-import javax.annotation.security.DeclareRoles;
 import javax.ejb.EJB;
-import javax.security.enterprise.authentication.mechanism.http.BasicAuthenticationMechanismDefinition;
+
 import javax.servlet.ServletException;
-import javax.servlet.annotation.HttpConstraint;
-import javax.servlet.annotation.ServletSecurity;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,10 +13,8 @@ import java.io.IOException;
 
 import static javax.ws.rs.HttpMethod.POST;
 
-@BasicAuthenticationMechanismDefinition()
-@ServletSecurity(@HttpConstraint())
 @WebServlet("/")
-public class  NewsSrevlet extends HttpServlet {
+public class NewsServlet extends HttpServlet {
 
     @EJB
     NewsService newsService;
@@ -30,9 +26,15 @@ public class  NewsSrevlet extends HttpServlet {
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String uri = req.getRequestURI();
         System.out.println(uri);
+        if (req.getUserPrincipal() != null)
+            req.setAttribute("customPrincipal", req.getUserPrincipal());
         switch (uri){
             case ("/EjEx2/login") : {
                 portalUserService.showLoginPage(req, resp);
+                break;
+            }
+            case ("/EjEx2/logout") : {
+                portalUserService.logOut(req, resp);
                 break;
             }
             case ("/EjEx2/news") : {

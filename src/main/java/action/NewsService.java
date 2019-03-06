@@ -4,6 +4,7 @@ import DAO.NewsDAO;
 import entity.News;
 
 import javax.annotation.security.DenyAll;
+import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ejb.Singleton;
@@ -21,7 +22,7 @@ public class NewsService {
 
     @EJB
     NewsDAO newsDAO;
-
+    @RolesAllowed("USER")
     public void showAddEditNews(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String  idSt = req.getParameter("id");
         if (idSt != null && idSt != ""){
@@ -31,7 +32,7 @@ public class NewsService {
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/jsp/editNews.jsp");
         requestDispatcher.forward(req, resp);
     }
-
+    @RolesAllowed("USER")
     public void addNews(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         News news = new News();
         fillNews(req, news);
@@ -39,7 +40,7 @@ public class NewsService {
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/EjEx2/listNews");
         requestDispatcher.forward(req, resp);
     }
-
+    @RolesAllowed("USER")
     public void updateNews(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         News news = new News();
         news.setNewsId(Long.parseLong(req.getParameter("newsId")));
@@ -49,19 +50,21 @@ public class NewsService {
         requestDispatcher.forward(req, resp);
     }
 
+    @PermitAll
     public void listNews(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("listNews", newsDAO.listNews());
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/jsp/newsList.jsp");
         requestDispatcher.forward(req, resp);
     }
 
+    @PermitAll
     public void getNewsById(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         long id = Long.parseLong(req.getParameter("id"));
         req.setAttribute("news", newsDAO.getNewsById(id));
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/jsp/news.jsp");
         requestDispatcher.forward(req, resp);
     }
-
+    @RolesAllowed("USER")
     public void deleteNews(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String[] idString = req.getParameterValues("deleteNews");
         if (idString != null) {

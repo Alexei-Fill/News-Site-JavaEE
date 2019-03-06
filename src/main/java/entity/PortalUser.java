@@ -10,6 +10,7 @@ public class PortalUser implements Serializable {
     private String login;
     private String password;
     private String token;
+    private String role;
 
     @Id
     @Column(name = "USER_ID")
@@ -50,6 +51,15 @@ public class PortalUser implements Serializable {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    @Column(name = "ROLE")
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     @Override
