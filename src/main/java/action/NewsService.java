@@ -1,15 +1,15 @@
 package action;
 
 import DAO.NewsDAO;
+import action.util.CustomLoggingInterceptor;
 import entity.News;
 
 import javax.annotation.security.DenyAll;
 import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
-import javax.ejb.Singleton;
 import javax.ejb.Stateless;
-import javax.security.enterprise.authentication.mechanism.http.LoginToContinue;
+import javax.interceptor.Interceptors;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +22,7 @@ public class NewsService {
 
     @EJB
     NewsDAO newsDAO;
+
     @RolesAllowed("USER")
     public void showAddEditNews(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String  idSt = req.getParameter("id");
@@ -32,7 +33,9 @@ public class NewsService {
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/jsp/editNews.jsp");
         requestDispatcher.forward(req, resp);
     }
+
     @RolesAllowed("USER")
+    @Interceptors(CustomLoggingInterceptor.class)
     public void addNews(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         News news = new News();
         fillNews(req, news);
@@ -40,7 +43,9 @@ public class NewsService {
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/EjEx2/listNews");
         requestDispatcher.forward(req, resp);
     }
+
     @RolesAllowed("USER")
+    @Interceptors(CustomLoggingInterceptor.class)
     public void updateNews(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         News news = new News();
         news.setNewsId(Long.parseLong(req.getParameter("newsId")));
@@ -64,7 +69,9 @@ public class NewsService {
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/jsp/news.jsp");
         requestDispatcher.forward(req, resp);
     }
+
     @RolesAllowed("USER")
+    @Interceptors(CustomLoggingInterceptor.class)
     public void deleteNews(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String[] idString = req.getParameterValues("deleteNews");
         if (idString != null) {

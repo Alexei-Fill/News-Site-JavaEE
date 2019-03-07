@@ -1,5 +1,7 @@
 import action.NewsService;
 import action.PortalUserService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.ejb.EJB;
 
