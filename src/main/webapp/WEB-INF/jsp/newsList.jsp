@@ -32,15 +32,15 @@
     <c:forEach items="${listNews}" var="news">
         <div class="content" align="center">
             <b> title </b>
-            <span style="padding-left: 20px"> ${news.newsTitle} </span>
-            <span style="float: right;"> <i><u>${news.newsDate}</u></i></span>
-            <h5>${news.newsBrief}</h5>
+            <span style="padding-left: 20px"> ${news.title} </span>
+            <span style="float: right;"> <i><u>${news.date}</u></i></span>
+            <h5>${news.brief}</h5>
             <span style="float: right;">
-    <a href="/EjEx2/news?id=${news.newsId}">  view</a>
+    <a href="/EjEx2/news?id=${news.id}">  view</a>
   <c:if test="${customPrincipal != null}">
-  <a href="/EjEx2/editNews?id=${news.newsId}"> edit</a>
+  <a href="/EjEx2/editNews?id=${news.id}"> edit</a>
 
-            <input type="checkbox" name="deleteNews" value="${news.newsId}"/>
+            <input type="checkbox" name="deleteNews" value="${news.id}"/>
   </c:if>
 
        </span>

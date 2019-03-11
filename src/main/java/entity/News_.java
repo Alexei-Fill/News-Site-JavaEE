@@ -9,11 +9,11 @@ import javax.persistence.metamodel.StaticMetamodel;
 @StaticMetamodel(News.class)
 public abstract class News_ {
 
-	public static volatile SingularAttribute<News, Long> newsId;
-	public static volatile SingularAttribute<News, String> newsContent;
-	public static volatile SingularAttribute<News, String> newsTitle;
-	public static volatile SingularAttribute<News, LocalDate> newsDate;
-	public static volatile SingularAttribute<News, String> newsBrief;
+	public static volatile SingularAttribute<News, Long> id;
+	public static volatile SingularAttribute<News, String> content;
+	public static volatile SingularAttribute<News, String> title;
+	public static volatile SingularAttribute<News, LocalDate> date;
+	public static volatile SingularAttribute<News, String> brief;
 
 	public static final String NEWS_ID = "newsId";
 	public static final String NEWS_CONTENT = "newsContent";

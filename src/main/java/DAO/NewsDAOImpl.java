@@ -40,17 +40,17 @@ public class NewsDAOImpl implements NewsDAO {
         List<Object[]> list = ((NativeQuery) query).list();
         for (Object[] obj : list) {
             News news = new News();
-            news.setNewsId(Integer.parseInt(obj[0].toString()));
-            news.setNewsTitle(obj[1].toString());
-            news.setNewsDate(LocalDate.parse(obj[2].toString(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S")));
+            news.setId(Integer.parseInt(obj[0].toString()));
+            news.setTitle(obj[1].toString());
+            news.setDate(LocalDate.parse(obj[2].toString(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S")));
 //            news.setDate(LocalDate.parse(obj[2].toString()));
             if (obj[3] != null) {
-                news.setNewsBrief(obj[3].toString());
+                news.setBrief(obj[3].toString());
             }
-            news.setNewsContent(obj[4].toString());
+            news.setContent(obj[4].toString());
             listNews.add(news);
         }
-        Collections.sort(listNews, Comparator.comparing(News::getNewsDate).thenComparing(News::getNewsTitle));
+        Collections.sort(listNews, Comparator.comparing(News::getDate).thenComparing(News::getTitle));
         return listNews;
     }
 
@@ -58,10 +58,10 @@ public class NewsDAOImpl implements NewsDAO {
     @Override
     public void addNews(News news){
         Query query = entityManager.createNamedQuery("@INSERT_INTO_NEWS");
-        query.setParameter("brief", news.getNewsBrief());
-        query.setParameter("content", news.getNewsContent());
-        query.setParameter("date_news", news.getNewsDate());
-        query.setParameter("title", news.getNewsTitle());
+        query.setParameter("brief", news.getBrief());
+        query.setParameter("content", news.getContent());
+        query.setParameter("date_news", news.getDate());
+        query.setParameter("title", news.getTitle());
         query.executeUpdate();
     }
 
@@ -71,11 +71,11 @@ public class NewsDAOImpl implements NewsDAO {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaUpdate<News> criteriaQuery = criteriaBuilder.createCriteriaUpdate(News.class);
         Root<News> root = criteriaQuery.from(News.class);
-        criteriaQuery.set(News_.newsTitle, news.getNewsTitle());
-        criteriaQuery.set(News_.newsBrief, news.getNewsBrief());
-        criteriaQuery.set(News_.newsContent, news.getNewsContent());
-        criteriaQuery.set(News_.newsDate, news.getNewsDate());
-        criteriaQuery.where(criteriaBuilder.equal(root.get(News_.newsId), news.getNewsId()));
+        criteriaQuery.set(News_.title, news.getTitle());
+        criteriaQuery.set(News_.brief, news.getBrief());
+        criteriaQuery.set(News_.content, news.getContent());
+        criteriaQuery.set(News_.date, news.getDate());
+        criteriaQuery.where(criteriaBuilder.equal(root.get(News_.id), news.getId()));
         entityManager.createQuery(criteriaQuery).executeUpdate();
     }
 

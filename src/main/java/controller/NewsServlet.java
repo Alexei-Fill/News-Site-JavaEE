@@ -1,3 +1,5 @@
+package controller;
+
 import action.NewsService;
 import action.PortalUserService;
 import org.apache.logging.log4j.LogManager;
@@ -66,7 +68,8 @@ public class NewsServlet extends HttpServlet {
                 break;
             }
             case ("/EjEx2/listNews"):
-            default: {
+//            default:
+                {
                 newsService.listNews(req, resp);
                 break;
             }

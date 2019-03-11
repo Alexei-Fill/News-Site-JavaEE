@@ -29,19 +29,19 @@
 </div>
 <div >
     <form action="/deleteNews" >
-  title  <p>${news.newsTitle}</p>
+  title  <p>${news.title}</p>
     <h6></h6>
     brief
-    <p>${news.newsBrief}</p>
+    <p>${news.brief}</p>
     <h6></h6>
  date
-    <p>${news.newsDate}</p>
+    <p>${news.date}</p>
     <h6></h6>
     content
-    <p>${news.newsContent}</p>
+    <p>${news.content}</p>
     <h6></h6>
 <c:if test="${customPrincipal != null}">
-<a href="/EjEx2/editNews?id=${news.newsId}"><input type="button" value="edit"/></a>
+<a href="/EjEx2/editNews?id=${news.id}"><input type="button" value="edit"/></a>
         <input style="" type="submit" value="delete"/>
 </c:if>
 

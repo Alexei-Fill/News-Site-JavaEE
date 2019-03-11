@@ -29,14 +29,14 @@
 </div>
 <div>
     <form  accept-charset="UTF-8"  id = "edit"  method="post"
-            <c:if test="${news.newsId != null}"> action="edit" > </c:if>
-            <c:if test="${news.newsId == null}"> action="add" > </c:if>
+            <c:if test="${news.id != null}"> action="edit" > </c:if>
+            <c:if test="${news.id == null}"> action="add" > </c:if>
 
-        <input name = "newsId" hidden="false" type="text" size="25" value ="${news.newsId}"/>
-        <label>title <input name = "newsTitle"  type="text"  value ="${news.newsTitle}"/> </label><br>
-        <label>date  <input name = "newsDate"  type="text"  value ="${news.newsDate}"/></label><br>
-        <label>brief <input name = "newsBrief"  type="text"  value ="${news.newsBrief}"/></label><br>
-        <label> content <input name = "newsContent"  type="text"  value ="${news.newsContent}"/></label><br>
+        <input name = "newsId" hidden="false" type="text" size="25" value ="${news.id}"/>
+        <label>title <input name = "newsTitle"  type="text"  value ="${news.title}"/> </label><br>
+        <label>date  <input name = "newsDate"  type="text"  value ="${news.date}"/></label><br>
+        <label>brief <input name = "newsBrief"  type="text"  value ="${news.brief}"/></label><br>
+        <label> content <input name = "newsContent"  type="text"  value ="${news.content}"/></label><br>
 
         <input type ="submit"   value ="sub"  />
 

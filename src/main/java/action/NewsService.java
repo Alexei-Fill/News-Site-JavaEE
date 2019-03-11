@@ -1,10 +1,9 @@
 package action;
 
 import DAO.NewsDAO;
-import action.util.CustomLoggingInterceptor;
+import util.CustomLoggingInterceptor;
 import entity.News;
 
-import javax.annotation.security.DenyAll;
 import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
@@ -48,7 +47,7 @@ public class NewsService {
     @Interceptors(CustomLoggingInterceptor.class)
     public void updateNews(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         News news = new News();
-        news.setNewsId(Long.parseLong(req.getParameter("newsId")));
+        news.setId(Long.parseLong(req.getParameter("newsId")));
         fillNews(req, news);
         newsDAO.updateNews(news);
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/EjEx2/listNews");
@@ -84,9 +83,9 @@ public class NewsService {
     }
 
     private void fillNews(HttpServletRequest req, News news){
-        news.setNewsTitle(req.getParameter("newsTitle"));
-        news.setNewsContent(req.getParameter("newsContent"));
-        news.setNewsBrief(req.getParameter("newsBrief"));
-        news.setNewsDate(LocalDate.parse(req.getParameter("newsDate")));
+        news.setTitle(req.getParameter("newsTitle"));
+        news.setContent(req.getParameter("newsContent"));
+        news.setBrief(req.getParameter("newsBrief"));
+        news.setDate(LocalDate.parse(req.getParameter("newsDate")));
     }
 }
