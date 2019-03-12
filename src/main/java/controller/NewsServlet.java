@@ -68,7 +68,7 @@ public class NewsServlet extends HttpServlet {
                 break;
             }
             case ("/EjEx2/listNews"):
-//            default:
+            default:
                 {
                 newsService.listNews(req, resp);
                 break;

@@ -3,6 +3,7 @@ package controller;
 import DAO.NewsDAO;
 import action.NewsRestService;
 import entity.News;
+import security.CustomSecured;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -32,18 +33,21 @@ public class NewsRestController {
     }
 
     @POST
+    @CustomSecured
     @Consumes(MediaType.APPLICATION_JSON)
     public void addNews(News news) {
         newsRestService.addNews(news);
     }
 
     @PUT
+    @CustomSecured
     @Consumes(MediaType.APPLICATION_JSON)
     public void updateNews(News news) {
         newsRestService.updateNews(news);
     }
 
     @DELETE
+    @CustomSecured
     @Consumes(MediaType.APPLICATION_JSON)
     public void deleteNews(Long[] id) {
         newsRestService.deleteNews(Arrays.asList(id));
