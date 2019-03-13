@@ -30,6 +30,14 @@ public class News implements Serializable {
     public News() {
     }
 
+    public News(DTONews dtoNews) {
+        this.id = dtoNews.getId();
+        this.title = dtoNews.getTitle();
+        this.date = LocalDate.parse(dtoNews.getDate());
+        this.brief = dtoNews.getBrief();
+        this.content = dtoNews.getContent();
+    }
+
     @Id
     @Column(name = "NEWS_ID")
     @SequenceGenerator(name = "newsGenerator", sequenceName = "NEWS_SEQUENCE", allocationSize = 1)
