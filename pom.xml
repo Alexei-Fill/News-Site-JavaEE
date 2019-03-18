@@ -172,7 +172,7 @@
           <hostname>localhost</hostname>
           <username>deployer</username>
           <password>deployer</password>
-          <port>9999</port>
+          <port>8282</port>
         </configuration>
       </plugin>
 
