@@ -163,6 +163,31 @@
           <target>8</target>
         </configuration>
       </plugin>
+
+      <plugin>
+        <groupId>org.jboss.as.plugins</groupId>
+        <artifactId>jboss-as-maven-plugin</artifactId>
+        <version>7.1.1.Final</version>
+        <configuration>
+          <hostname>http://localhost</hostname>
+          <port>8282</port>
+          <username>deployer</username>
+          <password>deployer</password>
+          <name>deployer</name>
+          <filename>EjEx2.war</filename>
+          <skip></skip>
+        </configuration>
+        <executions>
+          <execution>
+            <id>deploy-jar</id>
+            <phase>install</phase>
+            <goals>
+              <goal>deploy</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
     </plugins>
   </build>
 
