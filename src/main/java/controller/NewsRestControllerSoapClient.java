@@ -14,10 +14,11 @@ import java.util.List;
 
 @Path("/soap")
 @Stateless
-public class NewsRestControllerS {
-    Service service;
-    NewsSOAP soap;
-    public NewsRestControllerS() throws MalformedURLException {
+public class NewsRestControllerSoapClient {
+    private Service service;
+    private NewsSOAP soap;
+
+    public NewsRestControllerSoapClient() throws MalformedURLException {
         service = Service.create( new URL("http://localhost:8282/EjEx2/NewsSOAPControllerService/NewsSOAPController?Wsdl"),
                 new QName("http://news.org/wsdl", "NewsSOAPControllerService"));
         soap = service.getPort(NewsSOAP.class);

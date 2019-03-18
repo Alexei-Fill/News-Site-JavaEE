@@ -9,7 +9,6 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.security.auth.login.LoginException;
 import javax.ws.rs.*;
-import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.core.*;
 import java.util.UUID;
 
@@ -43,7 +42,7 @@ public class PortalUserRestController {
     private NewCookie issueToken(String username) {
         String authToken = UUID.randomUUID().toString();
         portalUserService.updateToken(username, authToken);
-        NewCookie newCookie = new NewCookie("x-auth-token", authToken, "/", "localhost", "", 30*60, false, false );
+        NewCookie newCookie = new NewCookie("x-auth-token", authToken, "/", "localhost", "", 30 * 60, false, false);
         return newCookie;
     }
 

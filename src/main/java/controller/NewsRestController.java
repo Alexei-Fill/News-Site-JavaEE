@@ -1,6 +1,5 @@
 package controller;
 
-import DAO.NewsDAO;
 import action.NewsRestService;
 import entity.News;
 import security.CustomSecured;
