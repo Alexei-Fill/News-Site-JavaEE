@@ -163,20 +163,7 @@
           <target>8</target>
         </configuration>
       </plugin>
-
-      <plugin>
-        <groupId>org.jboss.as.plugins</groupId>
-        <artifactId>jboss-as-maven-plugin</artifactId>
-        <version>7.9.Final</version>
-        <configuration>
-          <hostname>localhost</hostname>
-          <username>deployer</username>
-          <password>deployer</password>
-          <port>8282</port>
-        </configuration>
-      </plugin>
-
-    </plugins>
+     </plugins>
   </build>
 
   <repositories>
