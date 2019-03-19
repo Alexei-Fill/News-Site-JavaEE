@@ -97,26 +97,6 @@
       <artifactId>resteasy-jackson2-provider</artifactId>
       <version>3.0.1.Final</version>
     </dependency>
-
-    <!--<dependency>-->
-      <!--<groupId>org.jboss.resteasy</groupId>-->
-      <!--<artifactId>resteasy-jaxb-provider</artifactId>-->
-      <!--<version>3.0.16.Final</version>-->
-    <!--</dependency>-->
-
-    <!--<dependency>-->
-      <!--<groupId>org.eclipse.persistence</groupId>-->
-      <!--<artifactId>eclipselink</artifactId>-->
-      <!--<version>2.5.0</version>-->
-    <!--</dependency>-->
-
-    <!--<dependency>-->
-      <!--<groupId>org.hibernate</groupId>-->
-      <!--<artifactId>hibernate-jpamodelgen</artifactId>-->
-      <!--<version>${hibenate.version}</version>-->
-      <!--<scope>provided</scope>-->
-      <!--</dependency>-->
-
   </dependencies>
 
   <build>
@@ -172,5 +152,30 @@
       <url>https://code.lds.org/nexus/content/groups/main-repo</url>
     </repository>
   </repositories>
+
+  <profiles>
+    <profile>
+      <id>eclipselink</id>
+      <dependencies>
+        <dependency>
+        <groupId>org.eclipse.persistence</groupId>
+        <artifactId>eclipselink</artifactId>
+        <version>2.5.0</version>
+        </dependency>
+      </dependencies>
+    </profile>
+
+    <profile>
+      <id>modelGen</id>
+      <dependencies>
+        <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-jpamodelgen</artifactId>
+        <version>${hibenate.version}</version>
+        <scope>provided</scope>
+        </dependency>
+      </dependencies>
+    </profile>
+  </profiles>
 
 </project>
