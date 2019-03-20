@@ -10,7 +10,7 @@
 <div class="roof">
     <b style="margin-bottom: 20px;">newsManagment</b>
     <b style="margin-left: 65%;"><u>
-        <a style="margin: 15px; color:blue; cursor: pointer; ">Russian</a>
+        <a style="margin: 15px; color:blue; cursor: pointer; ">Russian</a>***************************************************
         <a style="margin: 15px; color:blue; cursor: pointer;">English</a></u></b>
 
     <c:if test="${customPrincipal == null}">
